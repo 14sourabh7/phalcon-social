@@ -11,7 +11,7 @@ $(document).ready(function () {
     if (sessionStorage.getItem("login") == 1) {
       sessionStorage.removeItem("login");
     }
-    location.replace("/pages/authentication");
+    location.replace("/login");
   });
 
   console.log(new URLSearchParams(window.location.search).get("id"));
@@ -41,13 +41,13 @@ $(document).ready(function () {
     }
     if (liked.length == 1) {
       var tempArr = stats.likes.filter(
-        (x) => x.user == sessionStorage.getItem("user_id")
+        (x) => x.user != sessionStorage.getItem("user_id")
       );
       stats.likes = tempArr;
       console.log(stats);
       $(".colorLike").css("color", "gray");
       $.ajax({
-        url: "/pages/operation",
+        url: "/post/operation",
         method: "post",
         data: {
           action: "updateStats",

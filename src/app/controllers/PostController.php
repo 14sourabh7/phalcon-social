@@ -10,15 +10,17 @@ class PostController extends Controller
     }
     public function operationAction()
     {
+        $post = new Posts();
+        $stat = new Stats();
         $action = $this->request->getPost()['action'];
         switch ($action) {
             case 'getPost':
-                $post = Posts::find($_POST['id']);
-                return json_encode($post);
+                $id = $this->request->getPost()['id'];
+                return $post->getPost($id);
                 break;
             case 'getStats':
-                $stats = Stats::find($_POST['id']);
-                return json_encode($stats);
+                $id = $this->request->getPost()['id'];
+                return $stat->getStats($id);
                 break;
             case 'updateStats':
                 $id = $_POST['id'];

@@ -10,13 +10,9 @@ class LoginController extends Controller
     }
     public function checkUserAction()
     {
+        $user = new Users();
         $email = $this->request->getPost()['email'];
         $password = $this->request->getPost()['password'];
-        $data = Users::find([
-            'conditions'
-            => "email='$email' AND password='$password' OR username='$email' AND password='$password'",
-
-        ]);
-        return json_encode($data);
+        return $user->checkUser($email, $password);
     }
 }

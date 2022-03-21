@@ -12,39 +12,25 @@ class IndexController extends Controller
     public function operationAction()
     {
         $action = $this->request->getPost()['action'];
-
+        $user = new Users();
+        $post = new Posts();
+        $circle = new Circles();
         switch ($action) {
             case 'getUser':
                 $val = $this->request->getPost()['value'];
-                $data = Users::find([
-                    'conditions' =>
-                    " email = '$val' OR username = '$val' OR name = '$val'",
-                ]);
-                return json_encode($data);
+                return $user->getUser($val);
                 break;
             case 'getUserPost':
                 $user = $this->request->getPost()['user_id'];
-                $posts = Posts::find([
-                    'conditions' =>
-                    "user_id = '$user'",
-                ]);
-                return json_encode($posts);
+                return $post->getUserPost($user);
                 break;
             case 'getOtherPosts':
                 $user = $this->request->getPost()['user_id'];
-                $posts = Posts::find([
-                    'conditions' =>
-                    "user_id != '$user'",
-                ]);
-                return json_encode($posts);
+                return $post->getOtherPosts($user);
                 break;
             case 'getCircle':
                 $user = $this->request->getPost()['user_id'];
-                $posts = Circles::find([
-                    'conditions' =>
-                    "user_id = '$user'",
-                ]);
-                return json_encode($posts);
+                return $circle->getCircle($user);
                 break;
         }
     }

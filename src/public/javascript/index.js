@@ -30,7 +30,7 @@ $(document).ready(function () {
         $(".result").show();
         console.log(data);
         for (let i = 0; i < data.length; i++) {
-          html += `<div class='col-7 mx-auto px-4 py-2 '><a class='btn text-muted' href='/pages/user?id=${data[i].user_id}'>
+          html += `<div class='col-7 mx-auto px-4 py-2 '><a class='btn text-muted' href='/profile?id=${data[i].user_id}'>
           ${data[i].name},-----address---${data[i].city}, ${data[i].country}----------user_id-----------#${data[i].username}
          </a>
           </div>`;

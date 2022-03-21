@@ -104,22 +104,21 @@ function displayForm() {
       )}&name=${sessionStorage.getItem(
     "name"
   )}" method="post" enctype="multipart/form-data" >
- 
-            <div class='d-flex'>
-            <label for ='postText' class='border'>
-                <textarea name="postText" id="postText" style:'border: none;
-    outline: none;'></textarea>
-            </label>
-            
-            <div style='display:flex; flex-direction: column; justify-content:center'>
-                <label for="fileToUpload" class="btn fw-bold">upload img/video
-                        <input type="file" accept="video/*|image/*" name="fileToUpload" id="fileToUpload"  style='display:none' required>
-                    </label></div>
-                
-                    <input type="submit" value="POST" class="btn fw-bold text-danger" name="submit">
+        <div class='row '>
+            <div class='col-8 mx-auto border'>
+                <div class='row' style='border:1px solid rgb(194, 214, 214);'>
+                    <textarea name="postText" id="postText" style='border-style: none; 
+                      border-color: Transparent;' placeholder='Create Post'></textarea>
                 </div>
-            </div>
-        </form>
+                <div class='row'>
+                   <label for="fileToUpload" class="btn fw-bold">
+                        <input type="file" accept="video/*|image/*" name="fileToUpload" id="fileToUpload"  required>
+                    </label>
+                    <input type="submit" value="POST" class="btn btn-secondary fw-bold " name="submit">
+                </div>
+           </div>
+        </div>   
+      </form>
   `);
 }
 function getPosts() {
